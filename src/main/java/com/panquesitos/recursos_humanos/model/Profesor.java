@@ -3,11 +3,11 @@ package com.panquesitos.recursos_humanos.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 @Entity // representa una tabla en la base de datos
-@Table(name = "profesores")
+@Table(name = "profesores") // tabla
 public class Profesor {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @GeneratedValue(strategy = GenerationType.IDENTITY) // llave primaria autoincrementable
         @Column(name = "id_profesor")
         private Long idProfesor;
 
