@@ -14,25 +14,30 @@ public class Profesor {
         @Column(nullable = false)
         private String nombre;
 
+        @Column(nullable = false)
+        private  String apellido_paterno;
+
+        @Column(nullable = false)
+        private String apellido_materno;
+
         @Column(nullable = false, unique = true)
         private String correo;
 
         @Column(nullable = false)
         private String contrasena;
 
-    @Column(name = "fecha_registro", nullable = false)
-    private LocalDate fechaRegistro = LocalDate.now();
 
 
     // Constructor vacío
         public Profesor() {}
 
         // Constructor con parámetros
-        public Profesor(String nombre, String correo, String contrasena, LocalDate fechaRegistro) {
+        public Profesor(String nombre, String correo, String contrasena, String apellido_paterno, String apellido_materno) {
             this.nombre = nombre;
+            this.apellido_paterno = apellido_paterno;
+            this.apellido_materno = apellido_materno;
             this.correo = correo;
             this.contrasena = contrasena;
-            this.fechaRegistro = fechaRegistro;
         }
 
         // Getters y Setters
@@ -51,6 +56,18 @@ public class Profesor {
         public void setNombre(String nombre) {
             this.nombre = nombre;
         }
+        public String getApellido_paterno() {
+            return apellido_paterno;
+        }
+        public void setApellido_paterno(String apellido_paterno) {
+            this.apellido_paterno = apellido_paterno;
+        }
+        public String getApellido_materno() {
+            return apellido_materno;
+        }
+        public void setApellido_materno(String apellido_materno) {
+            this.apellido_materno = apellido_materno;
+        }
 
         public String getCorreo() {
             return this.correo;
@@ -68,13 +85,7 @@ public class Profesor {
             this.contrasena = contrasena;
         }
 
-        public LocalDate getFechaRegistro() {
-            return fechaRegistro;
-        }
 
-        public void setFechaRegistro(LocalDate fechaRegistro) {
-            this.fechaRegistro = fechaRegistro;
-        }
     }
 
 
