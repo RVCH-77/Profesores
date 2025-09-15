@@ -22,12 +22,22 @@ public class ProfesorService {
     }
 
     // Login (buscar por correo)
-    public Optional<Profesor> login(String correo) {
-        return profesorRepository.findByCorreo(correo);
+    public Optional<Profesor> login(String correo, String contrasena) {
+        return  profesorRepository.findByCorreo(correo)
+                .filter(profesor -> profesor.getContrasena().equals(contrasena));
     }
 
     public List<Profesor> getAllProfesores() {
         return profesorRepository.findAll();
+    }
+    // Cambiar contraseña
+    public Optional<Profesor> cambiarContrasena(Long id, String nuevaContrasena) {
+        Optional<Profesor> op = profesorRepository.findById(id);
+        op.ifPresent(p -> {
+            p.setContrasena(nuevaContrasena);
+            profesorRepository.save(p);
+        });
+        return op;
     }
 }
 
