@@ -20,10 +20,11 @@ public class Profesor {
         @Column(nullable = false)
         private String contrasena;
 
-        @Column(name = "fecha_registro", nullable = false)
-        private LocalDate fechaRegistro;
+    @Column(name = "fecha_registro", nullable = false)
+    private LocalDate fechaRegistro = LocalDate.now();
 
-        // Constructor vacío
+
+    // Constructor vacío
         public Profesor() {}
 
         // Constructor con parámetros
