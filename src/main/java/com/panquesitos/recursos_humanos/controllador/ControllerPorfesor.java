@@ -6,11 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
-
+@RestController
+@RequestMapping("/profesores")
 public class ControllerPorfesor {
     @Autowired
     private ProfesorService profesorService;
+
+    // Inyectar el repositorio directamente para obtener todos los profesores
+    @GetMapping
+    public List<Profesor> getAll() {
+        return profesorService.getAllProfesores();
+    }
 
     // Registrar profesor
     @PostMapping

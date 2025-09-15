@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +24,10 @@ public class ProfesorService {
     // Login (buscar por correo)
     public Optional<Profesor> login(String correo) {
         return profesorRepository.findByCorreo(correo);
+    }
+
+    public List<Profesor> getAllProfesores() {
+        return profesorRepository.findAll();
     }
 }
 
