@@ -3,35 +3,44 @@ package com.panquesitos.recursos_humanos.controllador;
 import com.panquesitos.recursos_humanos.model.Profesor;
 import com.panquesitos.recursos_humanos.service.ProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+
 @RestController
 @RequestMapping("/profesores")
 public class ControllerPorfesor {
-    @Autowired
-    private ProfesorService profesorService;
 
-    // Inyectar el repositorio directamente para obtener todos los profesores
+    @Autowired
+    private ProfesorService service;
+
     @GetMapping
     public List<Profesor> getAll() {
-        return profesorService.getAllProfesores();
+        return service.getAllProfesores();
     }
 
-    // Registrar profesor
     @PostMapping
-    public ResponseEntity<Profesor> registrar(@RequestBody Profesor profesor) {
-        Profesor guardado = profesorService.registrarProfesor(profesor);
-        return ResponseEntity.ok(guardado);
+    public ResponseEntity<Profesor> crear(@RequestBody Profesor profesor) {
+        Profesor creado = service.registrarProfesor(profesor);
+        return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
 
-    // Login básico (solo busca por correo)
-    @GetMapping("/login")
-    public ResponseEntity<Profesor> login(@RequestParam String correo) {
-        Optional<Profesor> profesor = profesorService.login(correo);
-        return profesor.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @PostMapping("/login")
+    public ResponseEntity<Profesor> login(@RequestBody Map<String, String> body) {
+        String correo = body.get("correo");
+        String contrasena = body.get("contrasena");
+        Optional<Profesor> op = service.login(correo, contrasena);
+        return op.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+
+    @PutMapping("/{id}/password")
+    public ResponseEntity<Profesor> cambiarPassword(@PathVariable Long id, @RequestBody Map<String, String> body) {
+        String nueva = body.get("contrasena");
+        Optional<Profesor> op = service.cambiarContrasena(id, nueva);
+        return op.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 }
