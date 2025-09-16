@@ -13,4 +13,7 @@ public interface ProfesorRepository extends JpaRepository<Profesor, Long> {
 
     // Buscar por correo
     Optional<Profesor> findByCorreo(String correo);
+
+    // buscar por materia
+    Optional<Profesor> findByMateria(int materia);
 }

@@ -20,14 +20,14 @@ public class Profesor {
         @Column(nullable = false)
         private String apellidoMaterno;
 
-        @Column(nullable = false)
-        private  String materia;
-
         @Column(nullable = false, unique = true)
         private String correo;
 
         @Column(nullable = false)
         private String contrasena;
+
+        @Column(nullable = true)
+        private int idMateria;
 
 
 
@@ -35,12 +35,13 @@ public class Profesor {
         public Profesor() {}
 
         // Constructor con parámetros
-        public Profesor(String nombre, String correo, String contrasena, String apellidoPaterno, String apellidoMaterno) {
+        public Profesor(String nombre, String correo, String contrasena, String apellidoPaterno, String apellidoMaterno, int idMateria) {
             this.nombre = nombre;
             this.apellidoPaterno = apellidoPaterno;
             this.apellidoMaterno = apellidoMaterno;
             this.correo = correo;
             this.contrasena = contrasena;
+            this.idMateria = idMateria;
         }
 
         // Getters y Setters
@@ -71,13 +72,6 @@ public class Profesor {
         public void setApellidoMaterno(String apellidoMaterno) {
             this.apellidoMaterno = apellidoMaterno;
         }
-
-        public String getMateria() {
-            return materia;
-        }
-        public void setMateria(String materia) {
-            this.materia = materia;
-        }
         public String getCorreo() {
             return this.correo;
         }
@@ -92,6 +86,12 @@ public class Profesor {
 
         public void setContrasena(String contrasena) {
             this.contrasena = contrasena;
+        }
+        public int getIdMateria() {
+            return this.idMateria;
+        }
+        public void setIdMateria(int idMateria) {
+            this.idMateria = idMateria;
         }
 
 
