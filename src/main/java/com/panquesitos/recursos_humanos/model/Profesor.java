@@ -26,8 +26,12 @@ public class Profesor {
         @Column(nullable = false)
         private String contrasena;
 
-        @Column(nullable = true)
+    // Relación con Materia
+        @Column(name = "id_materia", nullable = false)
         private int idMateria;
+    @ManyToOne
+    @JoinColumn(name = "id_materia")
+    private Materia materia;
 
 
 
