@@ -27,8 +27,6 @@ public class Profesor {
         private String contrasena;
 
     // Relación con Materia
-        @Column(name = "id_materia", nullable = false)
-        private int idMateria;
     @ManyToOne
     @JoinColumn(name = "id_materia")
     private Materia materia;
@@ -39,13 +37,13 @@ public class Profesor {
         public Profesor() {}
 
         // Constructor con parámetros
-        public Profesor(String nombre, String correo, String contrasena, String apellidoPaterno, String apellidoMaterno, int idMateria) {
+        public Profesor(String nombre, String correo, String contrasena, String apellidoPaterno, String apellidoMaterno, Materia materia) {
             this.nombre = nombre;
             this.apellidoPaterno = apellidoPaterno;
             this.apellidoMaterno = apellidoMaterno;
             this.correo = correo;
             this.contrasena = contrasena;
-            this.idMateria = idMateria;
+            this.materia = materia;
         }
 
         // Getters y Setters
@@ -91,12 +89,13 @@ public class Profesor {
         public void setContrasena(String contrasena) {
             this.contrasena = contrasena;
         }
-        public int getIdMateria() {
-            return this.idMateria;
+        public Materia getMateria() {
+            return materia;
         }
-        public void setIdMateria(int idMateria) {
-            this.idMateria = idMateria;
+        public void setMateria(Materia materia) {
+            this.materia = materia;
         }
+
 
 
     }
