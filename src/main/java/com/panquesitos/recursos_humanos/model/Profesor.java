@@ -20,6 +20,9 @@ public class Profesor {
         @Column(nullable = false)
         private String apellidoMaterno;
 
+        @Column(nullable = false)
+        private  String materia;
+
         @Column(nullable = false, unique = true)
         private String correo;
 
@@ -32,7 +35,7 @@ public class Profesor {
         public Profesor() {}
 
         // Constructor con parámetros
-        public Profesor(String nombre, String correo, String contrasena, String apellido_paterno, String apellido_materno) {
+        public Profesor(String nombre, String correo, String contrasena, String apellidoPaterno, String apellidoMaterno) {
             this.nombre = nombre;
             this.apellidoPaterno = apellidoPaterno;
             this.apellidoMaterno = apellidoMaterno;
@@ -69,6 +72,12 @@ public class Profesor {
             this.apellidoMaterno = apellidoMaterno;
         }
 
+        public String getMateria() {
+            return materia;
+        }
+        public void setMateria(String materia) {
+            this.materia = materia;
+        }
         public String getCorreo() {
             return this.correo;
         }
