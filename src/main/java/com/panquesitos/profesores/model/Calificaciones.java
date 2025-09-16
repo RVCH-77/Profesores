@@ -17,6 +17,9 @@ public class Calificaciones {
     @Column(nullable = false)
     private int idProfesor;
 
+    @Column (nullable = false)
+    private int idGrupo;
+
     @Column(nullable = false)
     private int idAlumno;
 
@@ -52,6 +55,12 @@ public class Calificaciones {
     }
     public void setIdProfesor(int idProfesor) {
         this.idProfesor = idProfesor;
+    }
+    public int getIdGrupo() {
+        return idGrupo;
+    }
+    public void setIdGrupo(int idGrupo) {
+        this.idGrupo = idGrupo;
     }
     public int getIdAlumno() {
         return idAlumno;
