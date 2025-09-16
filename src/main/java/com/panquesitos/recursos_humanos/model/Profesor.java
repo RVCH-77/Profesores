@@ -15,10 +15,10 @@ public class Profesor {
         private String nombre;
 
         @Column(nullable = false)
-        private  String apellido_paterno;
+        private  String apellidoPaterno;
 
         @Column(nullable = false)
-        private String apellido_materno;
+        private String apellidoMaterno;
 
         @Column(nullable = false, unique = true)
         private String correo;
@@ -34,8 +34,8 @@ public class Profesor {
         // Constructor con parámetros
         public Profesor(String nombre, String correo, String contrasena, String apellido_paterno, String apellido_materno) {
             this.nombre = nombre;
-            this.apellido_paterno = apellido_paterno;
-            this.apellido_materno = apellido_materno;
+            this.apellidoPaterno = apellidoPaterno;
+            this.apellidoMaterno = apellidoMaterno;
             this.correo = correo;
             this.contrasena = contrasena;
         }
@@ -56,17 +56,17 @@ public class Profesor {
         public void setNombre(String nombre) {
             this.nombre = nombre;
         }
-        public String getApellido_paterno() {
-            return apellido_paterno;
+        public String getApellidoPaterno() {
+            return apellidoPaterno;
         }
-        public void setApellido_paterno(String apellido_paterno) {
-            this.apellido_paterno = apellido_paterno;
+        public void setApellidoPaterno(String apellidoPaterno) {
+            this.apellidoPaterno = apellidoPaterno;
         }
-        public String getApellido_materno() {
-            return apellido_materno;
+        public String getApellidoMaterno() {
+            return apellidoMaterno;
         }
-        public void setApellido_materno(String apellido_materno) {
-            this.apellido_materno = apellido_materno;
+        public void setApellidoMaterno(String apellidoMaterno) {
+            this.apellidoMaterno = apellidoMaterno;
         }
 
         public String getCorreo() {
