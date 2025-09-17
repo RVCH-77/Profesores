@@ -11,22 +11,34 @@ public class Administradores {
     @Column(name = "id_administrador")
     private Integer idAdministrador;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String nombre;
 
-    @Column(name = "apellido_paterno", nullable = false, length = 100)
+    @Column(name = "apellido_paterno", nullable = false)
     private String apellidoPaterno;
 
-    @Column(name = "apellido_materno", nullable = false, length = 100)
+    @Column(name = "apellido_materno", nullable = false)
     private String apellidoMaterno;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false)
     private String correo;
 
     @Column(nullable = false, length = 255)
     private String contrasena;
 
-    // ====== Getters y Setters ======
+    // Constructor vacío
+    public Administradores() {}
+
+    // Constructor con parámetros
+    public Administradores(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasena) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.correo = correo;
+        this.contrasena = contrasena;
+    }
+
+    // Getters y Setters
 
     public Integer getIdAdministrador() {
         return idAdministrador;

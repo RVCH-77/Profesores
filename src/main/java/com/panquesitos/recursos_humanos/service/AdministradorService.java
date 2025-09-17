@@ -1,44 +1,45 @@
 package com.panquesitos.recursos_humanos.service;
 
+import com.panquesitos.recursos_humanos.model.Administradores;
 import com.panquesitos.recursos_humanos.repository.AdministradoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdministradorService {
 
-    // Aquí puedes agregar métodos específicos para la lógica de negocio relacionada con los administradores
-
-
     @Autowired
-   private AdministradoresRepository administradoresRepository;
+    private AdministradoresRepository administradoresRepository;
 
-
-    //registrar administrador
-    public void registrarAdministrador(com.panquesitos.recursos_humanos.model.Administradores administrador) {
+    // Registrar administrador
+    public void registrarAdministrador(Administradores administrador) {
         administradoresRepository.save(administrador);
     }
 
     // Login
-    public com.panquesitos.recursos_humanos.model.Administradores login(String correo, String contrasena) {
+    public Administradores login(String correo, String contrasena) {
         return administradoresRepository.findByCorreoAndContrasena(correo, contrasena);
     }
 
     // Buscar por correo
-    public com.panquesitos.recursos_humanos.model.Administradores buscarPorCorreo(String correo) {
+    public Administradores buscarPorCorreo(String correo) {
         return administradoresRepository.findByCorreo(correo);
     }
+
     // Buscar por id
-    public com.panquesitos.recursos_humanos.model.Administradores buscarPorId(long id) {
-        return administradoresRepository.findById(id);
+    public Administradores buscarPorId(Long id) {
+        return administradoresRepository.findById(id).orElse(null);
     }
-    // Buscar por nombre
-    public com.panquesitos.recursos_humanos.model.Administradores buscarPorNombre(String nombre) {
-        return administradoresRepository.findByNombre(nombre);}
 
+    // Buscar por nombre (pueden existir varios con el mismo nombre)
+    public List<Administradores> buscarPorNombre(String nombre) {
+        return administradoresRepository.findByNombre(nombre);
+    }
 
-
-
-
-
+    // Listar todos los administradores
+    public List<Administradores> getAllProfesores() {
+        return administradoresRepository.findAll();
+    }
 }
