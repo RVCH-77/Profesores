@@ -18,4 +18,6 @@ public interface AdministradoresRepository extends JpaRepository <Administradore
 
 
 
+
+
 }
