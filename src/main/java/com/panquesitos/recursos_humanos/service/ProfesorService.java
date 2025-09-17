@@ -39,6 +39,10 @@ public class ProfesorService {
         });
         return op;
     }
+    //obtener profesor por id
+    public Optional<Profesor> getProfesorById(Long id) {
+        return profesorRepository.findById(id);
+    }
 }
 
 

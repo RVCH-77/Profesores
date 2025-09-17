@@ -44,4 +44,12 @@ public class ControllerPorfesor {
         Optional<Profesor> op = service.cambiarContrasena(id, nueva);
         return op.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
+    //
+    @GetMapping("/{id}")
+    public ResponseEntity<Profesor> getProfesorById(@PathVariable Long id) {
+        Optional<Profesor> profesor = service.getProfesorById(id);
+        return profesor.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
