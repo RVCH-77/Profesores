@@ -16,6 +16,4 @@ public interface AdministradoresRepository extends JpaRepository<Administradores
     // Buscar por nombre (puede haber varios con el mismo nombre)
     List<Administradores> findByNombre(String nombre);
 
-    //listar todos los administradores
-    List<Administradores> getAllProfesores();
 }

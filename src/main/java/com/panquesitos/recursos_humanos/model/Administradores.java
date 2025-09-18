@@ -14,10 +14,10 @@ public class Administradores {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(name = "apellido_paterno", nullable = false)
+    @Column( nullable = false)
     private String apellidoPaterno;
 
-    @Column(name = "apellido_materno", nullable = false)
+    @Column(nullable = false)
     private String apellidoMaterno;
 
     @Column(nullable = false)
