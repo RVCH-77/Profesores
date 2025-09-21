@@ -1,7 +1,5 @@
 package com.panquesitos.recursos_humanos.service;
 
-import com.panquesitos.recursos_humanos.model.Administradores;
-import com.panquesitos.recursos_humanos.repository.AdministradoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
