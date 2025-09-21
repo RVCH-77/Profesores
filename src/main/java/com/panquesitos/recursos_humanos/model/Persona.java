@@ -34,4 +34,74 @@ public class Persona {
     @JoinColumn(name = "id_rol")
     private Rol rol;
 
+    // Constructor vacío
+        public Persona() {}
+
+        // Constructor con parámetros
+        public Persona(String numeroEmpleado, String nombre, String apellidoPaterno, String apellidoMaterno, String usuario, String contrasena, Rol rol) {
+            this.numeroEmpleado = numeroEmpleado;
+            this.nombre = nombre;
+            this.apellidoPaterno = apellidoPaterno;
+            this.apellidoMaterno = apellidoMaterno;
+            this.usuario = usuario;
+            this.contrasena = contrasena;
+            this.rol = rol;
+        }
+
+        // Getters y Setters
+        public Long getIdEmpleado() {
+            return idEmpleado;
+        }
+
+        public void setIdEmpleado(Long idEmpleado) {
+            this.idEmpleado = idEmpleado;
+        }
+
+        public String getNumeroEmpleado() {
+            return numeroEmpleado;
+        }
+
+        public void setNumeroEmpleado(String numeroEmpleado) {
+            this.numeroEmpleado = numeroEmpleado;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+        public String getApellidoPaterno() {
+            return apellidoPaterno;
+        }
+        public void setApellidoPaterno(String apellidoPaterno) {
+            this.apellidoPaterno = apellidoPaterno;
+        }
+        public String getApellidoMaterno() {
+            return apellidoMaterno;
+        }
+        public void setApellidoMaterno(String apellidoMaterno) {
+            this.apellidoMaterno = apellidoMaterno;
+        }
+        public String getUsuario() {
+            return usuario;
+        }
+        public void setUsuario(String usuario) {
+            this.usuario = usuario;
+        }
+        public String getContrasena() {
+            return contrasena;
+        }
+        public void setContrasena(String contrasena) {
+            this.contrasena = contrasena;
+        }
+        public Rol getRol() {
+            return rol;
+        }
+        public void setRol(Rol rol) {
+            this.rol = rol;
+        }
+
+
 }
