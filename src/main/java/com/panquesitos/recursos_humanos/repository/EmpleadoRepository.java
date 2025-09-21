@@ -32,4 +32,8 @@ public interface EmpleadoRepository extends JpaRepository<Persona, Long> {
 
     // Buscar por rol
     List<Persona> findByRol_IdRol(Long idRol);
+
+    //Cambiar contraseña
+    Persona findByContrasena(String contrasena);
+
 }
