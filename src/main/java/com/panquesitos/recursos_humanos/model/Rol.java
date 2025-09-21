@@ -10,30 +10,31 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // llave primaria autoincrementable
     @Column(name = "id_rol")
-    private Long idRol;
-    @Column(nullable = false, unique = true)
-    private String nombreRol;
+    private int idRol;
+
+     @Column(name = "nombre") // nombre de la columna en la BD
+    private String nombre;
 
     // Constructor vacío
     public Rol() {}
     // Constructor con parámetros
-    public Rol(String nombreRol) {
-        this.nombreRol = nombreRol;
+    public Rol(String nombre) {
+        this.nombre = nombre;
     }
     // Getters y Setters
-    public Long getIdRol() {
+    public int getIdRol() {
         return idRol;
 
     }
-    public void setIdRol(Long idRol) {
+    public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
-    public String getNombreRol() {
-        return nombreRol;
+    public String getNombre() {
+        return nombre;
     }
-    public void setNombreRol(String nombreRol) {
-        this.nombreRol = nombreRol;
+    public void setNombreRol(String nombre) {
+        this.nombre = nombre;
     }
 
-    
+
 }

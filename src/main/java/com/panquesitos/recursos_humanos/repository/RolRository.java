@@ -11,4 +11,6 @@ public interface RolRository  extends JpaRepository<Rol, Long> {
 
 
 
+
+
 }

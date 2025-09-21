@@ -9,7 +9,7 @@ import java.util.List;
 public interface EmpleadoRepository extends JpaRepository<Persona, Long> {
 
     // Obtener el último número de empleado
-    @Query("SELECT e.numero_empleado FROM Persona e ORDER BY e.id DESC")
+    @Query(value = "SELECT numero_empleado FROM empleado ORDER BY id_empleado DESC LIMIT 1", nativeQuery = true)
     String findUltimoNumeroEmpleado();
 
     // Buscar por nombre
@@ -35,5 +35,8 @@ public interface EmpleadoRepository extends JpaRepository<Persona, Long> {
 
     //Cambiar contraseña
     Persona findByContrasena(String contrasena);
+
+    // Login
+    Persona findByUsuarioAndContrasena(String usuario, String contrasena);
 
 }

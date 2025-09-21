@@ -3,13 +3,18 @@ package com.panquesitos.recursos_humanos.controllador;
 import com.panquesitos.recursos_humanos.model.Persona;
 import com.panquesitos.recursos_humanos.service.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3001")
+
+
 @RequestMapping("/empleados")
 public class ControllerPersona {
 
@@ -18,9 +23,18 @@ public class ControllerPersona {
 
     // Crear empleado
     @PostMapping
-    public Persona crearEmpleado(@RequestBody Persona empleado) {
-        return empleadoService.registrarEmpleado(empleado);
+    public ResponseEntity<?> registrarEmpleado(@RequestBody Persona empleado) {
+        try {
+            Persona nuevoEmpleado = empleadoService.registrarEmpleado(empleado);
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevoEmpleado);
+        } catch (Exception e) {
+            e.printStackTrace(); // <--- esto imprime la causa exacta en consola
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", e.getMessage()));
+        }
     }
+
+
 
     // Listar todos los empleados
     @GetMapping
@@ -69,4 +83,19 @@ public class ControllerPersona {
     public void eliminarEmpleado(@PathVariable Long id) {
         empleadoService.eliminarEmpleado(id);
     }
+
+    //Buscar por usuario y contraseña
+    @PostMapping("/login")
+    public ResponseEntity<Persona> login(@RequestBody Map<String, String> body) {
+        // Tomamos los valores del body; si no existe "usuario", usamos "username"
+        String usuario = body.getOrDefault("usuario", body.get("username"));
+        String contrasena = body.getOrDefault("contrasena", body.get("password"));
+
+        System.out.println("Usuario: " + usuario + ", Contraseña: " + contrasena);
+
+        Optional<Persona> op = empleadoService.login(usuario, contrasena);
+        return op.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+
 }

@@ -1,9 +1,5 @@
 package com.panquesitos.recursos_humanos.principal;
 
-import  com.panquesitos.recursos_humanos.model.Profesor;
-import  com.panquesitos.recursos_humanos.repository.ProfesorRepository;
-import  com.panquesitos.recursos_humanos.service.ProfesorService;
-import   com.panquesitos.recursos_humanos.controllador.ControllerPorfesor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

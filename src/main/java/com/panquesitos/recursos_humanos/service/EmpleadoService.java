@@ -11,8 +11,11 @@ import java.util.Optional;
 @Service
 public class EmpleadoService {
 
+
+
     @Autowired
     private EmpleadoRepository empleadoRepository;
+
 
     // Registrar empleado con número de empleado autogenerado
     public Persona registrarEmpleado(Persona empleado) {
@@ -74,4 +77,14 @@ public class EmpleadoService {
     public List<Persona> buscarPorRol(Long idRol) {
         return empleadoRepository.findByRol_IdRol(idRol);
     }
+
+    // Login (buscar por usuario y contraseña)
+    public Optional<Persona> login(String usuario, String contrasena) {
+        Optional<Persona> persona = Optional.ofNullable(empleadoRepository.findByUsuario(usuario));
+        if (persona.isPresent() && persona.get().getContrasena().equals(contrasena)) {
+            return persona;
+        }
+        return Optional.empty();
+    }
+
 }
