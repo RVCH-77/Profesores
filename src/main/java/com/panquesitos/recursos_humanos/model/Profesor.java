@@ -28,8 +28,6 @@ public class Profesor {
 
 
 
-
-
     // Constructor vacío
         public Profesor() {}
 
