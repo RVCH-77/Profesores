@@ -2,20 +2,14 @@ package com.panquesitos.profesores.repository;
 
 import com.panquesitos.profesores.model.Calificaciones;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-@Repository
+public interface CalificacionRepository extends JpaRepository<Calificaciones, Long> {
 
-public interface CalificacionRepository extends JpaRepository<Calificaciones, Integer> {
+    //Listar calificaciones por diferentes criterios
+    List<Calificaciones> findByIdEmpleado(Long idEmpleado);
+    List<Calificaciones> findByIdAlumno(Long idAlumno);
+    List<Calificaciones> findByIdMateria(Long idMateria);
+    List<Calificaciones> findByIdGrupo(Long idGrupo);
 
-    // Métodos personalizados opcionales
-    List<Calificaciones> findByIdAlumno(int idAlumno);
-
-    List<Calificaciones> findByIdProfesor(int idProfesor);
-
-    List<Calificaciones> findByIdMateria(int idMateria);
-
-    List<Calificaciones> findByIdGrupo(int idGrupo);
 }

@@ -1,90 +1,101 @@
 package com.panquesitos.profesores.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "calificaciones")
 public class Calificaciones {
-
-
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY) // llave primaria
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_calificacion")
-    private int idCalificacion;
+    private Long idCalificacion;
+
+    @Column(name = "id_empleado", nullable = false)
+    private Long idEmpleado; // viene de RH
+
+    @Column(name = "id_grupo", nullable = false)
+    private Long idGrupo; // viene de Servicios Escolares
+
+    @Column(name = "id_alumno", nullable = false)
+    private Long idAlumno; // viene de Alumnos
+
+    @Column(name = "id_materia", nullable = false)
+    private Long idMateria; // viene de Servicios Escolares
 
     @Column(nullable = false)
-    private int idProfesor;
-
-    @Column (nullable = false)
-    private int idGrupo;
-
-    @Column(nullable = false)
-    private int idAlumno;
-
-    @Column(nullable = false)
-    private int idMateria;
-
-    @Column(nullable = false)
-    private float calificacion;
+    private Double calificacion;
 
     @Column(nullable = false)
     private LocalDate fecha;
 
     // Constructor vacío
     public Calificaciones() {}
+
     // Constructor con parámetros
-    public Calificaciones(int idProfesor, int idAlumno, int idMateria, float calificacion, LocalDate fecha) {
-        this.idProfesor = idProfesor;
+    public Calificaciones(Long idEmpleado, Long idGrupo, Long idAlumno, Long idMateria, Double calificacion, LocalDate fecha) {
+        this.idEmpleado = idEmpleado;
+        this.idGrupo = idGrupo;
         this.idAlumno = idAlumno;
         this.idMateria = idMateria;
         this.calificacion = calificacion;
         this.fecha = fecha;
     }
+
     // Getters y Setters
-    public int getIdCalificacion() {
+    public Long getIdCalificacion() {
         return idCalificacion;
     }
-    public void setIdCalificacion(int idCalificacion) {
+
+    public void setIdCalificacion(Long idCalificacion) {
         this.idCalificacion = idCalificacion;
     }
-    public int getIdProfesor() {
-        return idProfesor;
 
+    public Long getIdEmpleado() {
+        return idEmpleado;
     }
-    public void setIdProfesor(int idProfesor) {
-        this.idProfesor = idProfesor;
+
+    public void setIdEmpleado(Long idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
-    public int getIdGrupo() {
+
+    public Long getIdGrupo() {
         return idGrupo;
     }
-    public void setIdGrupo(int idGrupo) {
+
+    public void setIdGrupo(Long idGrupo) {
         this.idGrupo = idGrupo;
     }
-    public int getIdAlumno() {
+
+    public Long getIdAlumno() {
         return idAlumno;
     }
-    public void setIdAlumno(int idAlumno) {
+
+    public void setIdAlumno(Long idAlumno) {
         this.idAlumno = idAlumno;
     }
-    public int getIdMateria() {
+
+    public Long getIdMateria() {
         return idMateria;
     }
-    public void setIdMateria(int idMateria) {
+
+    public void setIdMateria(Long idMateria) {
         this.idMateria = idMateria;
     }
-    public float getCalificacion() {
+
+    public Double getCalificacion() {
         return calificacion;
     }
-    public void setCalificacion(float calificacion) {
+
+    public void setCalificacion(Double calificacion) {
         this.calificacion = calificacion;
     }
+
     public LocalDate getFecha() {
         return fecha;
     }
+
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-
 }
