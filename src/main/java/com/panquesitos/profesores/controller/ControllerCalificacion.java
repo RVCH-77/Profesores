@@ -8,10 +8,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/calificaciones")
-@CrossOrigin(origins = "*")
 public class ControllerCalificacion {
     private final ServiceCalificacion calificacionService;
 
+    //listado de todas las calificaciones
+    @GetMapping
+    public List<Calificaciones> todas() {
+        return calificacionService.consultarTodas();
+    }
 
     public ControllerCalificacion(ServiceCalificacion calificacionService) {
         this.calificacionService = calificacionService;
@@ -31,4 +35,15 @@ public class ControllerCalificacion {
     public List<Calificaciones> porAlumno(@PathVariable Long idAlumno) {
         return calificacionService.consultarPorAlumno(idAlumno);
     }
+    @GetMapping("/materia/{idMateria}")
+    public List<Calificaciones> porMateria(@PathVariable Long idMateria) {
+        return calificacionService.consultarPorMateria(idMateria);
+    }
+
+    @GetMapping("/grupo/{idGrupo}")
+    public List<Calificaciones> porGrupo(@PathVariable Long idGrupo) {
+        return calificacionService.consultarPorGrupo(idGrupo);
+    }
+
+
 }

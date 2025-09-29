@@ -39,5 +39,6 @@ public class ServiceCalificacion {
     //listado de todas las calificaciones
     public List<Calificaciones> consultarTodas() {
         return calificacionRepository.findAll();}
-    //
+
+
 }
